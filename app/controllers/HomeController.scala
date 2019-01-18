@@ -154,6 +154,7 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
         }
       } match {
         case scala.util.Failure(exception) => NotFound(s"$id is not a product in the catalogue")
+        case _ => Unit
       }
     }
     response
