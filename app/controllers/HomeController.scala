@@ -137,7 +137,7 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
     * @param id The item to purchase
     * @return The new inventory stock of the item
     */
-  @Deprecated(since="January 17th 2019. Start a cart session", forRemoval=false)
+  @Deprecated(since="January 17th 2019. Start a cart session")
   def buyProduct(id: String) = Action { implicit request: Request[AnyContent] =>
     var response = Ok(Json.parse("{}"))
     db.withConnection { implicit c =>
