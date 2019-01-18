@@ -40,7 +40,7 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
       }
       result match {
         case Left(errors) => response = NotFound(errors.mkString(","))
-        case Right(x) => response = Ok(Json.toJson(x))
+        case Right(x) => response = Ok(Json.prettyPrint(Json.toJson(x)))
       }
     }
     response
