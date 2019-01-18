@@ -106,7 +106,7 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
       contents.groupBy { item => item }
         .map { group => (group._1, group._2.length) }
     } match {
-      case Some(shoppingList) => {
+      case Some(shoppingList) if !shoppingList.isEmpty => {
         db.withConnection { implicit c =>
           println(shoppingList.keySet.toList)
           val inventory = SQL("SELECT * FROM products WHERE title in ({items})")
@@ -128,6 +128,7 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
           }
         }
       }
+      case Some(shoppingList) => Ok("No items in cart")
       case None => Ok(ERROR_NO_CART)
     }
   }
