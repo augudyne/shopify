@@ -65,7 +65,7 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
         .sortBy{ e => e._1 }
     } match {
       case Some(x) => Ok(Json.prettyPrint(Json.toJson(x)))
-      case None => Ok(ERROR_NO_CART)
+      case None => Redirect(routes.HomeController.start())
     }
   }
 
