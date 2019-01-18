@@ -7,7 +7,13 @@
 GET     /                           controllers.HomeController.index
 GET     /products                   controllers.HomeController.getProducts
 GET     /products/reset             controllers.HomeController.reset
-GET     /products/:id               controllers.HomeController.buyProduct(id: String)
+GET     /cart                       controllers.HomeController.cart
+GET     /cart/begin                 controllers.HomeController.start
+GET     /cart/purchase              controllers.HomeController.purchase
++nocsrf
+PUT     /cart/:id                   controllers.HomeController.addProduct(id: String)
++nocsrf
+DELETE  /cart/:id                   controllers.HomeController.removeProduct(id: String)
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
