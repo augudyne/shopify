@@ -34,7 +34,7 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
     * a path of `/`.
     */
   def index() = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.index("Welcome"))
+    Ok(views.html.index("Welcome to ShopifyDemo"))
   }
 
   def getProducts() = Action { implicit request: Request[AnyContent] =>
@@ -106,7 +106,7 @@ class HomeController @Inject()(cc: ControllerComponents, db: Database) extends A
       contents.groupBy { item => item }
         .map { group => (group._1, group._2.length) }
     } match {
-      case Some(shoppingList) if !shoppingList.isEmpty => {
+      case Some(shoppingList) if shoppingList.nonEmpty => {
         db.withConnection { implicit c =>
           println(shoppingList.keySet.toList)
           val inventory = SQL("SELECT * FROM products WHERE title in ({items})")

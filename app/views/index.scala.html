@@ -9,12 +9,62 @@
  * argument is a `String` with the title of the page, the second
  * argument is an `Html` object containing the body of the page.
  *@
-@main("Welcome to Play") {
+@main("Welcome to Shopify Demo") {
 
     @*
      * Get an `Html` object by calling the built-in Play welcome
      * template and passing a `String` message.
      *@
     @welcome(message)
+
+    <div id="content">
+    <h1 id="introduction">Introduction</h1>
+    <p>A barebones simple inventory API built on Scala Play Framework. Client sided cookie sessions maintain a cart of items. The base of this api is <a href="https://augudyne-shopify.herokuapp.com/">https://augudyne-shopify.herokuapp.com/</a>.</p>
+    <h1 id="overview">Overview</h1>
+    <p>PUT and DELETE requests are not Cross-Site Forgery secured. </p>
+    <p>Inventory is backed by a PostgreSQL database. Modifications to the table occur when user commits a cart to purchasing their cart (with relevant precondition checks). </p>
+    <p>Client's cart session is maintained client side with a session cookie that is tokenized to represent the items to purchase. Adding items to cart involve an existential query to the inventory database. Removal of item from cart simply modifies the session cookie. </p>
+    <p>A typical flow operates as such:</p>
+    <ul>
+        <li><code>GET products</code></li>
+        <li><code>GET cart</code></li>
+        <li><code>PUT cart/:id</code>
+            :id is the product title. Case and space sensitive</li>
+        <li><code>DELETE cart/:id</code>
+            :id is the product title. Case and space sensitive</li>
+        <li><code>GET card/purchase</code></li>
+    </ul>
+
+    <div>
+        <div class="outline-text-2" id="text-1">
+            <ul>
+                <li>API Documentation</li><dd><a href="https://documenter.getpostman.com/view/5424745/RznLHGY2">https://documenter.getpostman.com/view/5424745/RznLHGY2</a></dd>
+                <li>Github Repo</li><dd><a href="https://github.com/augudyne/shopify">https://github.com/augudyne/shopify</a></dd>
+                <li>Hosted Domain</li><dd><a href="https://augudyne-shopify.herokuapp.com/">https://augudyne-shopify.herokuapp.com/</a></dd>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <h1>Implementation Strategy</h1>
+
+            <div class="outline-text-3" id="text-2-1">
+                <p>
+                    I used Scala Play framework as opposed to Express.js (etc.) because I like the functional features of Scala and the libraries available with Play (less boilerplate!).
+                </p>
+            </div>
+        </div>
+        <h1>Improvements</h1>
+        <p>
+            Though I spent about 7 hours on this, there are some improvements I can foresee.
+        </p>
+        <ul>
+            <li>Server Side Session Management</li>
+            <p>Users should be able to save their cart to something less ephemeral, i.e. create an account. This would make it similar to my framework for VocabularyList. This would involve commiting the session id and contents to a seperate database table</p>
+            <li>Improved Error Workflow</li>
+            <p>Instead of just warning users when an illegal action is performed, we should make a workflow that allows the user to remedy the error. E.g. adding a product without a cart should automatically create such a cart. This is easily done by just creating a new session with the single element.</p>
+            <li>Cart Management with Quantity</li>
+            <p>Rather than add/remove items one at a time, we should be able to specify the number of items. This would simply involve adding a query parameter, but additional precondition checking in the case of multiple deletes.</dd>
+        </ul>
+    </div>
 
 }

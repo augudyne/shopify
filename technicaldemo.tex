@@ -1,0 +1,55 @@
+% Created 2019-01-17 Thu 19:31
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage{wrapfig}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Augustine Kwong}
+\date{\textit{<2019-01-17 Thu>}}
+\title{Shopify Demo}
+\hypersetup{
+ pdfauthor={Augustine Kwong},
+ pdftitle={Shopify Demo},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.1 (Org mode 9.1.13)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Overview}
+\label{sec:org258fbed}
+\begin{description}
+\item[{API Documentation}] \url{https://documenter.getpostman.com/view/5424745/RznLHGY2}
+\item[{Github Repo}] \url{https://github.com/augudyne/shopify}
+\item[{Hosted Domain}] \url{https://augudyne-shopify.herokuapp.com/}
+\end{description}
+\section{Implementation Strategy}
+\label{sec:org20855e9}
+\subsection{Framework}
+\label{sec:orgdd53a9c}
+I used Scala Play framework as opposed to Express.js (etc.) because I like the functional features of Scala and the libraries available with Play (less boilerplate!). 
+\section{Improvements}
+\label{sec:orgf727fe5}
+Though I spent about 7 hours on this, there are some improvements I can foresee.
+\begin{description}
+\item[{Server Side Session Management}] Users should be able to save their cart to something less ephemeral, i.e. create an account. This would make it similar to my framework for VocabularyList. This would involve commiting the session id and contents to a seperate database table
+\item[{Improved Error Workflow}] Instead of just warning users when an illegal action is performed, we should make a workflow that allows the user to remedy the error. E.g. adding a product without a cart should automatically create such a cart. This is easily done by just creating a new session with the single element.
+\item[{Cart Management with Quantity}] Rather than add/remove items one at a time, we should be able to specify the number of items. This would simply involve adding a query parameter, but additional precondition checking in the case of multiple deletes.
+\end{description}
+\end{document}

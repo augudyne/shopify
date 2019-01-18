@@ -1,0 +1,28 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
+#+OPTIONS: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+OPTIONS: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+OPTIONS: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+TITLE: Shopify Demo
+#+DATE: <2019-01-17 Thu>
+#+AUTHOR: Augustine Kwong
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.13)
+
+* Overview
+  - API Documentation :: https://documenter.getpostman.com/view/5424745/RznLHGY2
+  - Github Repo :: https://github.com/augudyne/shopify
+  - Hosted Domain :: https://augudyne-shopify.herokuapp.com/
+* Implementation Strategy
+** Framework
+   I used Scala Play framework as opposed to Express.js (etc.) because I like the functional features of Scala and the libraries available with Play (less boilerplate!). 
+* Improvements
+  Though I spent about 7 hours on this, there are some improvements I can foresee.
+  - Server Side Session Management :: Users should be able to save their cart to something less ephemeral, i.e. create an account. This would make it similar to my framework for VocabularyList. This would involve commiting the session id and contents to a seperate database table
+  - Improved Error Workflow :: Instead of just warning users when an illegal action is performed, we should make a workflow that allows the user to remedy the error. E.g. adding a product without a cart should automatically create such a cart. This is easily done by just creating a new session with the single element.
+  - Cart Management with Quantity :: Rather than add/remove items one at a time, we should be able to specify the number of items. This would simply involve adding a query parameter, but additional precondition checking in the case of multiple deletes. 
+
+   
+
+  

@@ -125,3 +125,47 @@ form dl{padding:10px 0;}
 dd.info{color:#888;font-size:12px;}
 dd.error{color:#c00;}
 aside a[href^="http"]:after,.doc a[href^="http"]:after{content:url(/assets/images/external.png);vertical-align:middle;margin-left:5px;}
+#content {
+    width: 600px;
+    text-align: left;
+    margin: auto;
+}
+#content h1 {
+    margin: 20px 0 10px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #505050;
+    font-family: "Open Sans",sans-serif;
+}
+
+#content p {
+    color: #282828;
+    font-weight: 400;
+    font-size: 14px;
+    margin: 0 0 10px;
+}
+
+#content a {
+    color: #EF5B25;
+}
+
+#content ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+#content code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: grey;
+    border-radius: 3px;
+    background: 0 0;
+    border: solid thin #e6e6e6;
+    font-family: Courier,sans-serif;
+}
